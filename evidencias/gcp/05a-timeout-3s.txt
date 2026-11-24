@@ -1,0 +1,12 @@
+
+===== Passo 5a - demorar=true com limite de 3 s (CLOUD_RUN_TIMEOUT_SECONDS=3) =====
+$ functions-framework --source funcao-gcp/main.py --target guias --signature-type http --port 8080
+>> instância subiu (Init: processo + runtime + import da função) em 122 ms
+$ curl -X POST http://127.0.0.1:8080/guias -H 'Content-Type: application/json' -d '{"requisicaoId":"R-003","demorar":true}'
+[HTTP 500 em 5.015691s]
+500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+
+===== Erro registrado no log da função =====
+[2026-11-24 16:47:38,074] ERROR in app: Exception on /guias [POST]
+    time.sleep(5)  # passa do Timeout de 3 s do template
+functions_framework.exceptions.RequestTimeoutException

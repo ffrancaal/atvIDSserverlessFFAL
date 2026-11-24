@@ -1,0 +1,16 @@
+
+===== Ambiente =====
+$ python --version
+Python 3.9.6
+$ pip show functions-framework
+Name: functions-framework
+Version: 3.10.2
+$ sam --version
+SAM CLI, version 1.155.2
+$ docker --version
+docker não instalado nesta máquina -> sam local invoke/start-api não executam; usei o Functions Framework
+
+===== Testes unitários do handler =====
+$ python -m pytest -q rota-vital-guias/tests/unit
+.....                                                                    [100%]
+5 passed in 0.01s

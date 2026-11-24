@@ -1,0 +1,45 @@
+
+===== Passo 4b - HTTP COM reaproveitamento (mesma instância, como --warm-containers LAZY) =====
+$ functions-framework --source funcao-gcp/main.py --target guias --signature-type http --port 8080
+>> instância subiu (Init: processo + runtime + import da função) em 120 ms
+
+===== Chamada 1 =====
+$ curl -X POST http://127.0.0.1:8080/guias -H 'Content-Type: application/json' -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+X-Instancia-Pid: 32528
+[HTTP 201 em 0.002617s]
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 1}
+
+===== Chamada 2 =====
+$ curl -X POST http://127.0.0.1:8080/guias -H 'Content-Type: application/json' -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+X-Instancia-Pid: 32528
+[HTTP 201 em 0.000906s]
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 2}
+
+===== Chamada 3 =====
+$ curl -X POST http://127.0.0.1:8080/guias -H 'Content-Type: application/json' -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+X-Instancia-Pid: 32528
+[HTTP 201 em 0.000804s]
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 3}
+
+===== Requisição sem requisicaoId (esperado 400) =====
+$ curl -X POST http://127.0.0.1:8080/guias -H 'Content-Type: application/json' -d '{"hospital":"H-Caruaru"}'
+X-Instancia-Pid: 32528
+[HTTP 400 em 0.000741s]
+{"erro": "requisicaoId obrigat\u00f3rio"}
+
+===== Instância reiniciada: o estado global some =====
+$ functions-framework --source funcao-gcp/main.py --target guias --signature-type http --port 8080
+>> instância subiu (Init: processo + runtime + import da função) em 115 ms
+$ curl -X POST http://127.0.0.1:8080/guias -H 'Content-Type: application/json' -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+X-Instancia-Pid: 32560
+[HTTP 201 em 0.004265s]
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 1}
+
+===== Log da função =====
+INIT pid=32524 módulo da função carregado em 0.2 ms
+REPORT pid=32528 Duration: 0.04 ms Init Duration: 0.2 ms status=201
+REPORT pid=32528 Duration: 0.02 ms status=201
+REPORT pid=32528 Duration: 0.01 ms status=201
+REPORT pid=32528 Duration: 0.01 ms status=400
+INIT pid=32553 módulo da função carregado em 0.2 ms
+REPORT pid=32560 Duration: 0.04 ms Init Duration: 0.2 ms status=201

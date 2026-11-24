@@ -1,0 +1,2 @@
+INIT pid=32471 módulo da função carregado em 0.3 ms
+REPORT pid=32475 Duration: 0.03 ms Init Duration: 0.3 ms status=201

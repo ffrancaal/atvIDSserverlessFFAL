@@ -1,0 +1,26 @@
+
+===== Passo 4a - HTTP SEM reaproveitamento (uma instância nova por chamada, como sam local start-api padrão) =====
+
+===== Chamada 1 =====
+$ functions-framework --source funcao-gcp/main.py --target guias --signature-type http --port 8080
+>> instância subiu (Init: processo + runtime + import da função) em 198 ms
+$ curl -X POST http://127.0.0.1:8080/guias -H 'Content-Type: application/json' -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+X-Instancia-Pid: 32475
+[HTTP 201 em 0.002524s]
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 1}
+
+===== Chamada 2 =====
+$ functions-framework --source funcao-gcp/main.py --target guias --signature-type http --port 8080
+>> instância subiu (Init: processo + runtime + import da função) em 109 ms
+$ curl -X POST http://127.0.0.1:8080/guias -H 'Content-Type: application/json' -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+X-Instancia-Pid: 32493
+[HTTP 201 em 0.002705s]
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 1}
+
+===== Chamada 3 =====
+$ functions-framework --source funcao-gcp/main.py --target guias --signature-type http --port 8080
+>> instância subiu (Init: processo + runtime + import da função) em 119 ms
+$ curl -X POST http://127.0.0.1:8080/guias -H 'Content-Type: application/json' -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+X-Instancia-Pid: 32509
+[HTTP 201 em 0.002933s]
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 1}

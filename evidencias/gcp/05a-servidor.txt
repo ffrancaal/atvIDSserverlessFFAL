@@ -1,0 +1,31 @@
+INIT pid=32578 módulo da função carregado em 0.2 ms
+[2026-11-24 16:47:33 -0300] [32578] [INFO] Starting gunicorn 23.0.0
+[2026-11-24 16:47:33 -0300] [32578] [INFO] Listening at: http://0.0.0.0:8080 (32578)
+[2026-11-24 16:47:33 -0300] [32578] [INFO] Using worker: functions_framework._http.gunicorn.GThreadWorkerWithTimeoutSupport
+[2026-11-24 16:47:33 -0300] [32582] [INFO] Booting worker with pid: 32582
+[2026-11-24 16:47:38,074] ERROR in app: Exception on /guias [POST]
+Traceback (most recent call last):
+  File "/Users/felipefranca/Documents/GitHub/atvIDSserverlessFFAL/.venv/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/felipefranca/Documents/GitHub/atvIDSserverlessFFAL/.venv/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/felipefranca/Documents/GitHub/atvIDSserverlessFFAL/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/felipefranca/Documents/GitHub/atvIDSserverlessFFAL/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/felipefranca/Documents/GitHub/atvIDSserverlessFFAL/.venv/lib/python3.9/site-packages/functions_framework/execution_id.py", line 157, in wrapper
+    result = view_function(*args, **kwargs)
+  File "/Users/felipefranca/Documents/GitHub/atvIDSserverlessFFAL/.venv/lib/python3.9/site-packages/functions_framework/__init__.py", line 142, in view_func
+    return function(request._get_current_object())
+  File "/Users/felipefranca/Documents/GitHub/atvIDSserverlessFFAL/.venv/lib/python3.9/site-packages/functions_framework/__init__.py", line 121, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/felipefranca/Documents/GitHub/atvIDSserverlessFFAL/funcao-gcp/main.py", line 41, in guias
+    resp = _executar(event)
+  File "/Users/felipefranca/Documents/GitHub/atvIDSserverlessFFAL/funcao-gcp/main.py", line 28, in _executar
+    resp = app.lambda_handler(event, None)
+  File "/Users/felipefranca/Documents/GitHub/atvIDSserverlessFFAL/funcao-gcp/../rota-vital-guias/hello_world/app.py", line 16, in lambda_handler
+    time.sleep(5)  # passa do Timeout de 3 s do template
+functions_framework.exceptions.RequestTimeoutException
+[2026-11-24 16:47:38 -0300] [32578] [INFO] Handling signal: term
+[2026-11-24 16:47:39 -0300] [32582] [INFO] Worker exiting (pid: 32582)
+[2026-11-24 16:47:39 -0300] [32578] [INFO] Shutting down: Master

@@ -1,0 +1,5 @@
+INIT pid=32524 módulo da função carregado em 0.2 ms
+REPORT pid=32528 Duration: 0.04 ms Init Duration: 0.2 ms status=201
+REPORT pid=32528 Duration: 0.02 ms status=201
+REPORT pid=32528 Duration: 0.01 ms status=201
+REPORT pid=32528 Duration: 0.01 ms status=400

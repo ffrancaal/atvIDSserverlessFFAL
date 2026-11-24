@@ -1,0 +1,21 @@
+
+===== Passo 3 - invocação com evento (CloudEvent com o events/pedido.json do SAM) =====
+$ functions-framework --source funcao-gcp/main.py --target guias_evento --signature-type cloudevent --port 8080
+>> instância subiu (Init: processo + runtime + import da função) em 191 ms
+
+===== Invocação 1 (cold start: instância recém-criada) =====
+$ curl -X POST http://127.0.0.1:8080 -H 'ce-type: rotavital.requisicao.criada' ... -d @rota-vital-guias/events/pedido.json
+OK[HTTP 200 em 0.003130s]
+>> tempo total da invocação 1 (subir instância + executar): 233 ms
+
+===== Invocação 2 (instância já existente) =====
+$ curl -X POST http://127.0.0.1:8080 -H 'ce-type: rotavital.requisicao.criada' ... -d @rota-vital-guias/events/pedido.json
+OK[HTTP 200 em 0.004424s]
+>> tempo total da invocação 2: 28 ms
+
+===== Log da função (INIT/REPORT/RESULTADO) =====
+INIT pid=32442 módulo da função carregado em 0.2 ms
+REPORT pid=32447 Duration: 0.06 ms Init Duration: 0.2 ms status=201
+RESULTADO {"statusCode": 201, "body": "{\"guia\": \"G-R-001\", \"hospital\": \"H-Recife\", \"bolsas\": [\"O-NEG-0142\"], \"invocacaoNesteAmbiente\": 1}"}
+REPORT pid=32447 Duration: 0.02 ms status=201
+RESULTADO {"statusCode": 201, "body": "{\"guia\": \"G-R-001\", \"hospital\": \"H-Recife\", \"bolsas\": [\"O-NEG-0142\"], \"invocacaoNesteAmbiente\": 2}"}

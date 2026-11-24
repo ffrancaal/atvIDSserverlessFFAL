@@ -1,0 +1,5 @@
+INIT pid=32442 módulo da função carregado em 0.2 ms
+REPORT pid=32447 Duration: 0.06 ms Init Duration: 0.2 ms status=201
+RESULTADO {"statusCode": 201, "body": "{\"guia\": \"G-R-001\", \"hospital\": \"H-Recife\", \"bolsas\": [\"O-NEG-0142\"], \"invocacaoNesteAmbiente\": 1}"}
+REPORT pid=32447 Duration: 0.02 ms status=201
+RESULTADO {"statusCode": 201, "body": "{\"guia\": \"G-R-001\", \"hospital\": \"H-Recife\", \"bolsas\": [\"O-NEG-0142\"], \"invocacaoNesteAmbiente\": 2}"}

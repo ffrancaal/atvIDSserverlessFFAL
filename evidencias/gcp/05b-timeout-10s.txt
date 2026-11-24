@@ -1,0 +1,10 @@
+
+===== Passo 5b - limite aumentado para 10 s (CLOUD_RUN_TIMEOUT_SECONDS=10) =====
+$ functions-framework --source funcao-gcp/main.py --target guias --signature-type http --port 8080
+>> instância subiu (Init: processo + runtime + import da função) em 116 ms
+$ curl -X POST http://127.0.0.1:8080/guias -H 'Content-Type: application/json' -d '{"requisicaoId":"R-003","demorar":true}'
+X-Instancia-Pid: 32613
+[HTTP 201 em 5.011050s]
+{"guia": "G-R-003", "hospital": null, "bolsas": [], "invocacaoNesteAmbiente": 1}
+INIT pid=32609 módulo da função carregado em 0.2 ms
+REPORT pid=32613 Duration: 5005.41 ms Init Duration: 0.2 ms status=201

@@ -1,0 +1,9 @@
+INIT pid=32609 módulo da função carregado em 0.2 ms
+[2026-11-24 16:47:39 -0300] [32609] [INFO] Starting gunicorn 23.0.0
+[2026-11-24 16:47:39 -0300] [32609] [INFO] Listening at: http://0.0.0.0:8080 (32609)
+[2026-11-24 16:47:39 -0300] [32609] [INFO] Using worker: functions_framework._http.gunicorn.GThreadWorkerWithTimeoutSupport
+[2026-11-24 16:47:39 -0300] [32613] [INFO] Booting worker with pid: 32613
+REPORT pid=32613 Duration: 5005.41 ms Init Duration: 0.2 ms status=201
+[2026-11-24 16:47:44 -0300] [32609] [INFO] Handling signal: term
+[2026-11-24 16:47:45 -0300] [32613] [INFO] Worker exiting (pid: 32613)
+[2026-11-24 16:47:45 -0300] [32609] [INFO] Shutting down: Master
