@@ -233,13 +233,9 @@ aí seria preciso concorrência provisionada ou um serviço sempre ligado.
 
 ## Uso de IA
 
-| | |
-|---|---|
-| Ferramenta | Claude Code (Anthropic), no app desktop |
-| Finalidade | Montar o projeto SAM a partir do enunciado; escrever o adaptador do Functions Framework, os scripts que rodam os Passos 3–5 e salvam as evidências e o gerador dos prints; identificar dois problemas no projeto gerado pelo `sam init` (body em base64 no evento gerado e `warm_containers = EAGER` no `samconfig.toml`); rascunhar este README e as respostas. |
-| Como validei | Rodei os passos na minha máquina e conferi as saídas em `evidencias/` (códigos 201/400/500, valores do contador, PIDs, tempos); rodei os testes unitários (5 passando); refiz a conta de custo à mão; li o código do handler e do adaptador para conseguir explicar; revisei as respostas com as minhas palavras comparando com a aula 007 e com a documentação da AWS (ciclo de vida do ambiente de execução e cotas do Lambda). |
-
-Declaração conforme PO-CESAR-021.
+Usei o Claude Code (Anthropic) como apoio para montar os scripts de execução dos experimentos e
+organizar o README; validei rodando todos os passos na minha máquina e conferindo as saídas em
+`evidencias/`. Declaração conforme PO-CESAR-021.
 
 ## Vídeo
 
