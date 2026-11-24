@@ -239,4 +239,4 @@ organizar o README; validei rodando todos os passos na minha máquina e conferin
 
 ## Vídeo
 
-Link do vídeo (até 3 min): _adicionar_
+Link do vídeo (até 3 min):
