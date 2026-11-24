@@ -1,7 +1,7 @@
 # Atividade individual 1 · Serverless — Rota Vital
 
 Infraestrutura de Software · ADS · CESAR School · 2026.2
-Aluno: Felipe França Alves de Lima
+Aluno: Felipe Franca Alves de Lima
 
 Função serverless que gera a **guia de transporte** de uma requisição do Rota Vital, acionada por
 **evento** e por **HTTP** (`POST /guias`), rodando no meu computador.
